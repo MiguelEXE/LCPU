@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LCPU</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a id="download" download="code.aasm"></a>
+    <div id="code"></div>
+    <input type="file">
+    <button onclick="compile_code();" disabled>Compile</button>
+    <button onclick="makeStep()" disabled>Step</button>
+    <input type="number" id="interval" placeholder="Interval timeout in MS" min="0" value="200">
+    <input type="number" id="stepTimes" placeholder="CPU steps before actually updating" min="1" value="1">
+    <button onclick="intervalStep();" disabled>Interval Step</button>
+    <button onclick="intervalClear();" disabled>Stop Interval</button>
+    <button onclick="reset()" disabled>Reset</button>
+    <button onclick="reset(true)" disabled>Reset CPU</button>
+    <br>
+    <button onclick="downloadCode()" disabled>Download code</button>
+    <button onclick="downloadROM()" disabled>Download ROM</button>
+    <button onclick="newCode()" disabled>New code</button>
+    <button onclick="loadCode()" disabled>Load code</button>
+    <button onclick="saveCode()" disabled>Save code</button>
+    <button onclick="uploadCode()" disabled>Upload source code</button>
+    <button onclick="uploadROM()" disabled>Upload ROM</button>
+    <br>
+    <input type="checkbox" id="noUpdateInfo">
+    <label for="noUpdateInfo">Don't update information (ip, registers, etc)</label>
+    <br>
+    <input type="checkbox" id="noUpdateMemory">
+    <label for="noUpdateMemory">Don't update memory</label>
+    <br>
+    <br>
+    <input type="checkbox" id="dark-theme">
+    <label for="dark-theme">Enable dark theme</label>
+    <br>
+    <p id="status"></p>
+    <table id="registers">
+        <tr>
+            <th title="X Register" id="xr-color">XR</th>
+            <th title="Y Register" id="yr-color">YR</th>
+            <th title="Z Register" id="zr-color">ZR</th>
+        </tr>
+        <tr id="rvalues">
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+    </table>
+    <table id="sregs">
+        <tr>
+            <th title="Halted">HLT</th>
+            <th title="Zero Flag">ZF</th>
+            <th title="Carry Flag">CF</th>
+        </tr>
+        <tr id="srvalues">
+            <td>false</td>
+            <td>false</td>
+            <td>false</td>
+        </tr>
+    </table>
+    <table id="ram-viewer"></table>
+</body>
+<script src="dist/main.js"></script>
+</html>
