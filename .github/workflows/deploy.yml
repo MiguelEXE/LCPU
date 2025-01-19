@@ -21,6 +21,10 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           cmd: build
+      - name: upload page so deploy does their thing
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/
   deploy:
     permissions:
       contents: read

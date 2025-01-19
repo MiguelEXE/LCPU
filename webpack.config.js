@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 const path = require('path');
 
 module.exports = {
@@ -26,6 +27,12 @@ module.exports = {
         new MonacoWebpackPlugin(),
         new webpack.ProvidePlugin({
             "process": "process"
+        }),
+        new CopyPlugin({
+            patterns: [
+                { from: "./index.html" },
+                { from: "./style.css" }
+            ]
         })
     ],
     mode: "production",
